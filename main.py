@@ -11,7 +11,7 @@ from node import Node
 def main():
     # fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 5, "hotels")
     # fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Fuel%20Oil/', 3, "fuel_oil")
-    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Fuel%20Oil/', 3, "restaurants", top_restaurants)
+    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/dublin/what/Restaurants/', 3, "restaurants", top_restaurants)
 
 
 def fetch_data(url: int, pages_number: int, lead_name: str, exclude: list[str] = []):
