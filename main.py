@@ -8,7 +8,7 @@ from node import Node
 
 
 def main():
-    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 2, "hotels")
+    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 5, "hotels")
 
 
 def fetch_data(url: int, pages_number: int, lead_name: str):
@@ -46,7 +46,7 @@ def fetch_data(url: int, pages_number: int, lead_name: str):
             leads.append([title, number, address, email])
 
     df = pd.DataFrame(leads, columns=["Title", "Number", "Address", "Email"])
-    df.to_csv(f"{lead_name}.scv")
+    df.to_csv(f"{lead_name}.csv")
     end = time.time()
     print(end - start)
 
