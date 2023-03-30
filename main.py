@@ -2,13 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
+import os
 
 from top_restaurants import top_restaurants
 from node import Node
 
 
 def main():
-    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 5, "hotels")
+    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 5, "hotels.csv")
 
 
 def fetch_data(url: int, pages_number: int, lead_name: str):
@@ -46,7 +47,13 @@ def fetch_data(url: int, pages_number: int, lead_name: str):
             leads.append([title, number, address, email])
 
     df = pd.DataFrame(leads, columns=["Title", "Number", "Address", "Email"])
-    df.to_csv(f"{lead_name}.csv")
+
+    file_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_folder = 'leads'
+    file_path = os.path.join(file_dir, csv_folder, lead_name + '.csv')
+
+    df.to_csv(file_path)
+
     end = time.time()
     print(end - start)
 
