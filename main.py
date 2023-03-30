@@ -9,7 +9,8 @@ from node import Node
 
 
 def main():
-    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 5, "hotels.csv")
+    # fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 5, "hotels")
+    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Fuel%20Oil/', 3, "fuel_oil")
 
 
 def fetch_data(url: int, pages_number: int, lead_name: str):
