@@ -10,10 +10,11 @@ from node import Node
 
 def main():
     # fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Hotels/', 5, "hotels")
-    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Fuel%20Oil/', 3, "fuel_oil")
+    # fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Fuel%20Oil/', 3, "fuel_oil")
+    fetch_data('https://www.goldenpages.ie/q/business/advanced/where/Dublin/what/Fuel%20Oil/', 3, "restaurants", top_restaurants)
 
 
-def fetch_data(url: int, pages_number: int, lead_name: str):
+def fetch_data(url: int, pages_number: int, lead_name: str, exclude: list[str] = []):
     leads = []
     start = time.time()
     for i in range(1, pages_number):
@@ -27,7 +28,7 @@ def fetch_data(url: int, pages_number: int, lead_name: str):
             new_node = Node(listingContainer, "a", "listing_title_link")
             title = new_node.get_text().strip().split(" ", 1)[1]
 
-            if any(x in title for x in top_restaurants):
+            if any(x in title for x in exclude):
                 continue
 
             new_node = Node(listingContainer, "a", "link_listing_number")
